@@ -12,8 +12,6 @@ const forecast = (latitude, longitude, cb) => {
         }
         else {
             cb(undefined, {
-                name: resp.body.location.name,
-                country: resp.body.location.country,
                 weather_description: resp.body.current.weather_descriptions[0], 
                 temperature: resp.body.current.temperature,
                 feelslike: resp.body.current.feelslike
