@@ -1,19 +1,14 @@
 const fs = require('fs');
 
-/* const book = {
-    title: 'Ego is the Enemy',
-    author: 'Ryan Holiday'
-}
+const initialUser = JSON.stringify({name: "Tamás", age: 59});
+fs.writeFileSync('1-json.json', initialUser);
 
-const bookJSON = JSON.stringify(book);
-fs.writeFileSync('1-json.json', bookJSON); */
+const dataBuffer = fs.readFileSync('1-json.json')
+const dataJSON = dataBuffer.toString()
+const user = JSON.parse(dataJSON)
 
-const dataBuffer = fs.readFileSync('1-json.json');
-const dataJSON = dataBuffer.toString();
+user.name = 'Daniel';
+user.age = 28;
 
-const data = JSON.parse(dataJSON);
-data.name = "Daniel Pataki";
-data.age = 28;
-
-const newDataJSON = JSON.stringify(data);
-fs.writeFileSync('1-json.json', newDataJSON);
+const userJSON = JSON.stringify(user);
+fs.writeFileSync('1-json.json', userJSON);
