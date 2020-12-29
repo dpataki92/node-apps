@@ -8,18 +8,18 @@ if (!address) {
     console.log(chalk.red("Please provide an address."));
 }
 else {
-    geocode(address, (error, data) => {
+    geocode(address, (error, {location, latitude, longitude} = {}) => {
         if (error) {
             return console.log(chalk.red(error));
         }
 
-        forecast(data.latitude, data.longitude, (error, forecastData) => {
+        forecast(latitude, longitude, (error, {weather_description, temperature, feelslike} = {}) => {
             if (error) {
                 return console.log(chalk.red(error));
             }
     
-            console.log(chalk.blue.bold(data.location));
-            console.log(chalk.yellow(`${forecastData.weather_description}. It is currently ${forecastData.temperature} degrees out. It feels like ${forecastData.feelslike} degrees.`));
+            console.log(chalk.blue.bold(location));
+            console.log(chalk.yellow(`${weather_description}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees.`));
         })
     })
 }
