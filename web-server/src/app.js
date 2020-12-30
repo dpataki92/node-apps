@@ -26,11 +26,11 @@ app.get("", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.render("about", {title: "Weather App", name: "Daniel Pataki", img: "/img/avatar.jpeg"});
+    res.render("about", {title: "Weather App", name: "Daniel Pataki", img: "/img/avatar.jpeg", github: "https://github.com/dpataki92"});
 });
 
-app.get("/help", (req, res) => {
-    res.render("help", {title: "Weather App", name: "Daniel Pataki", email: "danielpataki@gmail.com"});
+app.get("/contact", (req, res) => {
+    res.render("contact", {title: "Weather App", name: "Daniel Pataki", email: "ptamasdaniel92@gmail.com"});
 });
 
 app.get('/weather', (req, res) => {
@@ -57,7 +57,7 @@ app.get('/weather', (req, res) => {
     }
 });
 
-app.get("/help/*", (req, res) => {
+app.get("/contact/*", (req, res) => {
     res.render("error", {title: "404", name: "Daniel Pataki", message: "Help article not found."});
 });
 
