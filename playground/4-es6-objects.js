@@ -23,7 +23,8 @@ const product = {
 /* const {price, label:productLabel, rating = 5} = product;
 console.log(productLabel, price, rating); */
 
-const transaction = (type, {label, stock}) => {
+// add default params to avoid error when object is undefined
+const transaction = (type, {label, stock = 0} = {}) => {
     console.log(type, label, stock)
 }
 
