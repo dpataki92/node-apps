@@ -37,6 +37,14 @@ app.get('/weather', (req, res) => {
     });
 });
 
+app.get("/help/*", (req, res) => {
+    res.render("error", {title: "Weather App", name: "Daniel Pataki", message: "Help article not found."});
+});
+
+app.get("*", (req, res) => {
+    res.render("error", {title: "Weather App", name: "Daniel Pataki", message: "Page not found."});
+});
+
 app.listen(3000, () => {
     console.log("Server is up on port 3000.");
 });
