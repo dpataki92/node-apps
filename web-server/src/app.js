@@ -23,7 +23,7 @@ app.get("", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.render("about", {title: "Weather App", name: "Daniel Pataki", img: "/img/robot.png"});
+    res.render("about", {title: "Weather App", name: "Daniel Pataki", img: "/img/avatar.jpeg"});
 });
 
 app.get("/help", (req, res) => {
@@ -38,11 +38,11 @@ app.get('/weather', (req, res) => {
 });
 
 app.get("/help/*", (req, res) => {
-    res.render("error", {title: "Weather App", name: "Daniel Pataki", message: "Help article not found."});
+    res.render("error", {title: "404", name: "Daniel Pataki", message: "Help article not found."});
 });
 
 app.get("*", (req, res) => {
-    res.render("error", {title: "Weather App", name: "Daniel Pataki", message: "Page not found."});
+    res.render("error", {title: "404", name: "Daniel Pataki", message: "Page not found."});
 });
 
 app.listen(3000, () => {
