@@ -6,12 +6,15 @@ const weatherForm = document.querySelector("form");
 const search = document.querySelector("input");
 const messageOne = document.querySelector("#messageOne");
 const messageTwo = document.querySelector("#messageTwo");
+const weatherIcon = document.getElementById("weatherIcon");
 
 weatherForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    weatherIcon.src = "";
     messageOne.textContent = "Loading...";
-    messageTwo.textContent = "";
+    messageTwo.querySelector("#forecast").textContent = "";
+    messageTwo.querySelector("#additional").textContent = "";
 
     fetch(`/weather?address=${search.value}`)
     .then((resp) => {
@@ -20,8 +23,10 @@ weatherForm.addEventListener("submit", (e) => {
                 messageOne.textContent = data.error;
             }
             else {
+                weatherIcon.src = data.icon;
                 messageOne.textContent = data.location;
-                messageTwo.textContent = data.forecast;
+                messageTwo.querySelector("#forecast").textContent = data.forecast;
+                messageTwo.querySelector("#additional").textContent = data.additional;
             }
         })
     })

@@ -11,12 +11,16 @@ const forecast = (latitude, longitude, cb) => {
             cb(body.error.info, undefined);
         }
         else {
-            const {weather_descriptions, temperature, feelslike} = body.current;
+            const {weather_descriptions, temperature, feelslike, weather_icons, humidity, precip, wind_speed} = body.current;
 
             cb(undefined, {
                 weather_description: weather_descriptions[0], 
                 temperature,
-                feelslike
+                feelslike,
+                weather_icons,
+                humidity,
+                precip,
+                wind_speed
             })
         }
     })

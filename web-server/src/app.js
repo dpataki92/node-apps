@@ -43,14 +43,16 @@ app.get('/weather', (req, res) => {
                 return res.send({error: error});
             }
 
-            forecast(latitude, longitude, (error, {weather_description, temperature, feelslike} = {}) => {
+            forecast(latitude, longitude, (error, {weather_description, temperature, feelslike, wind_speed, humidity, precip, weather_icons} = {}) => {
                 if (error) {
                     return res.send({error: error});
                 }
 
                 res.send({
                     location,
-                    forecast: `${weather_description}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees.`
+                    forecast: `${weather_description}. It is currently ${temperature} degrees out. It feels like ${feelslike} degrees.`,
+                    icon: weather_icons[0],
+                    additional: `Humidity is ${humidity}%. Precipitation is ${precip} mm. You can expect a wind speed of ${wind_speed} kmph.`
                 });
             })
         })

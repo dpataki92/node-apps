@@ -41,6 +41,10 @@ a {
     width: 250px;
 }
 
+#weatherIcon {
+    width: 40px;
+}
+
 #messageOne {
     font-weight: bold;
 }
