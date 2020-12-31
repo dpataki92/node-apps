@@ -1,9 +1,9 @@
-# CryptoTracks
+# NODE.JS APPS
 
 This repo contains simple node.js applications that I built during my studies in the Complete Node.js Developer course delivered by Andrew Mead. 
 
-- Notes app - CLI application for writing and managing notes via terminal commands. It utilizes yargs for argument parsing and chalk for styling terminal outputs.
-- Weather app - Web application for getting current weather data based on location. The app leverages express.js, hbs and request, along with the external mapbox and weatherstack APIs.
+- **Notes app** - CLI application for writing and managing notes via terminal commands. It utilizes yargs for argument parsing and chalk for styling terminal outputs.
+- **Weather app** - Web application for getting current weather data based on location. The app leverages express.js, hbs, and request along with the external mapbox and weatherstack APIs.
 
 # Technologies
 
@@ -23,7 +23,7 @@ This repo contains simple node.js applications that I built during my studies in
 # Usage
 
 - Notes app
-    - Cd into notes-app folder.
+    - Cd into notes-app folder
     - Use 'node app.js add --title="[your note title]" --body="[your note body]"' to add a note
     - Use 'node app.js list' to list your notes
     - Use 'node app.js read  --title="[your note title]"' to read a specific note
