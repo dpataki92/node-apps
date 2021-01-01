@@ -10,23 +10,19 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
 
     const db = client.db(databaseName);
 
-/*     db.collection("users").updateOne({_id: ObjectID("5fef5dc3fcb02b0c95ebb43b")}, {
-        $inc: {
-            age: 1
-        }
-    }).then((result) => {
-        console.log(result);
-    }).catch((error) => {
-        console.log(error);
-    }) */
+/*     db.collection("users").deleteMany({name: "Borris"})
+    .then((result) => {
+        console.log(result.deletedCount);
+    })
+    .then((error) => {
+        console.log(error)
+    }); */
 
-    db.collection("tasks").updateMany({completed: false}, {
-        $set: {
-            completed: true
-        }
-    }).then((result) => {
-        console.log(result);
-    }).catch((error) => {
+    db.collection("tasks").deleteOne({description: "Call Bonnie to check in"})
+    .then((result) => {
+        console.log(result.deletedCount);
+    })
+    .catch((error) => {
         console.log(error);
     })
 
