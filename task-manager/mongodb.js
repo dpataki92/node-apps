@@ -1,11 +1,13 @@
 // CRUD operations
 
-const mongodb = require("mongodb");
-
-const MongoClient = mongodb.MongoClient;
+const {MongoClient, ObjectID} = require("mongodb");
 
 const connectionURL = "mongodb://127.0.0.1:27017";
 const databaseName = "task-manager";
+
+const id = new ObjectID();
+console.log(id.id.length)
+console.log(id.toHexString().length)
 
 MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: true}, (error, client) => {
     if (error) {return console.log("Unable to connnect to database!")}
@@ -13,12 +15,13 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
     const db = client.db(databaseName);
 
 /*     db.collection("users").insertOne({
-        name: "Daniel",
-        age: 27
+        _id: id,
+        name: "Borris",
+        age: 35
     }, (error, result) => {
         if (error) return console.log("Unable to insert user!");
         console.log(result.ops)
-    }) */
+    })  */
 
 
 /*     db.collection("users").insertMany([
@@ -36,7 +39,7 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
         console.log(result.ops);
     }) */
 
-    db.collection("tasks").insertMany([
+/*     db.collection("tasks").insertMany([
         {
             description: "Online meeting on January 2, 2pm CET",
             completed: false
@@ -53,5 +56,5 @@ MongoClient.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: t
         if (error) return console.log("Unable to insert documents.");
 
         console.log(result.ops);
-    })
+    }) */
 });
