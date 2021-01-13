@@ -13,17 +13,17 @@ const messageTemplate = document.getElementById("message-template").innerHTML;
 const locationMessageTemplate = document.getElementById("message-template-location").innerHTML;
 
 socket.on("message", (msg) => {
-    console.log(msg);
     const html = Mustache.render(messageTemplate, {
-        msg
+        msg: msg.text,
+        createdAt: moment(msg.createdAt).format("h:mm a")
     });
     $messages.insertAdjacentHTML("beforeend", html);
 });
 
-socket.on("locationMessage", (url) => {
-    console.log(url);
+socket.on("locationMessage", (locationMessage) => {
     const html = Mustache.render(locationMessageTemplate, {
-        url
+        url: locationMessage.url,
+        createdAt: moment(locationMessage.createdAt).format("h:mm a")
     });
     $messages.insertAdjacentHTML("beforeend", html);
 });
