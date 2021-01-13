@@ -19,11 +19,18 @@ io.on("connection", (socket) => {
      console.log("new web socket connection");
 
     socket.emit("message", "Welcome!");
+    socket.broadcast.emit("message", "A new user has joined!");
 
     socket.on("sendMessage", (newMessage) => {
         io.emit("message", newMessage);
+    });
+
+    socket.on("disconnect", () => {
+        io.emit("message", "A user has left!")
     })
-})
+});
+
+
 
 server.listen(port, () => {
     console.log(`Server is up and running on port ${port}.`)
