@@ -12,6 +12,9 @@ const $messages = document.getElementById("messages");
 const messageTemplate = document.getElementById("message-template").innerHTML;
 const locationMessageTemplate = document.getElementById("message-template-location").innerHTML;
 
+// Options
+const { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true });
+
 socket.on("message", (msg) => {
     const html = Mustache.render(messageTemplate, {
         msg: msg.text,
@@ -66,3 +69,5 @@ $sendLocationButton.addEventListener("click", () => {
         });
     });
 });
+
+socket.emit("join", {username, room});
